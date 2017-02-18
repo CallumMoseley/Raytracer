@@ -2,6 +2,7 @@ package app;
 import java.awt.AWTException;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -9,7 +10,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import geometry.ColourCube;
 import geometry.Ray;
@@ -46,8 +49,11 @@ public class RayPanel extends JPanel implements MouseListener, MouseMotionListen
 			@Override
 			public void run() {
 				while (true) {
-					if (lockMouse)
-						robot.mouseMove(getWidth() / 2 + 8, getHeight() / 2 + 31);
+					if (lockMouse) {
+						JFrame frame = (JFrame) RayPanel.this.getParent().getParent().getParent();
+						Point centre = SwingUtilities.convertPoint(RayPanel.this, getWidth() / 2, getHeight() / 2, frame); // lol 3 parents to get frame
+						robot.mouseMove(centre.x + frame.getX(), centre.y + frame.getY());
+					}
 					if (keysPressed[KeyEvent.VK_W]) {
 						cam.position.pos.addToThis(cam.position.dir.getWithLength(0.1));
 					}

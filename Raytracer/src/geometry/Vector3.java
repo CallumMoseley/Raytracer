@@ -120,6 +120,10 @@ public class Vector3 {
 	public String toString() {
 		return String.format("Vector3[%.2f, %.2f, %.2f]", x, y, z);
 	}
+	
+	public boolean equals(Vector3 other) {
+		return x == other.x && y == other.y && z == other.z;
+	}
 
 	public static Vector3 add(Vector3 a, Vector3 b) {
 		return new Vector3(a.x + b.x, a.y + b.y, a.z + b.z);
