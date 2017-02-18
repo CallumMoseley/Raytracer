@@ -54,6 +54,34 @@ public class Ray {
 		u *= invDet;
 		v *= invDet;
 		
-		return pos.add(dir.getWithLength(t0));
+		if (t0 > 0)
+			return pos.add(dir.getWithLength(t0));
+		return Vector3.INFINITY;
+		
+//		if (det > -0.000001 && det < 0.000001)
+//			return Vector3.INFINITY;
+//		
+//		double invDet = 1 / det;
+//		
+//		Vector3 t = pos.subtract(v0);
+//		
+//		double u = t.getDot(p) * invDet;
+//		if (u < 0 || u > 1)
+//			return Vector3.INFINITY;
+//		
+//		Vector3 q = t.getCross(edge1);
+//		
+//		double v = dir.getDot(q) * invDet;
+//		if (v < 0 || u + v > 1) 
+//			return Vector3.INFINITY;
+//		double t0 = edge2.getDot(q) * invDet;
+//		if (t0 > 0)
+//			return pos.add(dir.getWithLength(t0));
+//		return Vector3.INFINITY;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("Ray[p[%.2f, %.2f, %.2f], d[%.2f, %.2f, %.2f]]", pos.x, pos.y, pos.z, dir.x, dir.y, dir.z);
 	}
 }
