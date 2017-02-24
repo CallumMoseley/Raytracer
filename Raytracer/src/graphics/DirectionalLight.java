@@ -1,6 +1,5 @@
 package graphics;
 
-import geometry.Ray;
 import geometry.Vector3;
 
 public class DirectionalLight implements LightSource {
@@ -10,9 +9,10 @@ public class DirectionalLight implements LightSource {
 	public DirectionalLight(Vector3 d) {
 		direction = d;
 	}
-
+	
 	@Override
-	public double getIntensity(Ray p, Vector3 normal) {
-		return 0;
+	public LightState getIntensity(Vector3 viewer, Vector3 normal, Vector3 point, double specularHardness) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

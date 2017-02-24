@@ -1,14 +1,12 @@
 package geometry;
 
-import java.awt.Color;
-
 public class ColourCube extends Mesh {
 	
 	public ColourCube(double l, Vector3 pos) {
 		l /= 2;
 		Vector3[] vertices;
 		int[][] triangles;
-		Color[] triangleColours;
+		Vector3[] triangleColours;
 		vertices = new Vector3[8];
 		vertices[0] = new Vector3(-l, -l, -l);
 		vertices[1] = new Vector3(l, -l, -l);
@@ -65,19 +63,19 @@ public class ColourCube extends Mesh {
 		triangles[11][1] = 6;
 		triangles[11][2] = 4;
 		
-		triangleColours = new Color[12];
-		triangleColours[0] = Color.RED;
-		triangleColours[1] = Color.RED;
-		triangleColours[2] = Color.GREEN;
-		triangleColours[3] = Color.GREEN;
-		triangleColours[4] = Color.BLUE;
-		triangleColours[5] = Color.BLUE;
-		triangleColours[6] = Color.YELLOW;
-		triangleColours[7] = Color.YELLOW;
-		triangleColours[8] = Color.CYAN;
-		triangleColours[9] = Color.CYAN;
-		triangleColours[10] = Color.PINK;
-		triangleColours[11] = Color.PINK;
+		triangleColours = new Vector3[12];
+		triangleColours[0] = new Vector3(Math.random(), Math.random(), Math.random());
+		triangleColours[1] = triangleColours[0];
+		triangleColours[2] = new Vector3(Math.random(), Math.random(), Math.random());
+		triangleColours[3] = triangleColours[2];
+		triangleColours[4] = new Vector3(Math.random(), Math.random(), Math.random());
+		triangleColours[5] = triangleColours[4];
+		triangleColours[6] = new Vector3(Math.random(), Math.random(), Math.random());
+		triangleColours[7] = triangleColours[6];
+		triangleColours[8] = new Vector3(Math.random(), Math.random(), Math.random());
+		triangleColours[9] = triangleColours[8];
+		triangleColours[10] = new Vector3(Math.random(), Math.random(), Math.random());
+		triangleColours[11] = triangleColours[10];
 		
 		setMesh(vertices, triangles, triangleColours);
 	}

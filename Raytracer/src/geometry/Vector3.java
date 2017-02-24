@@ -1,5 +1,7 @@
 package geometry;
 
+import java.awt.Color;
+
 public class Vector3 {
 	public static final Vector3 ZERO = new Vector3();
 	public static final Vector3 INFINITY = new Vector3(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
@@ -80,6 +82,10 @@ public class Vector3 {
 		return Math.sqrt(x * x + y * y + z * z);
 	}
 
+	public double getLengthSq() {
+		return x * x + y * y + z * z;
+	}
+
 	public Vector3 getWithLength(double scalar) {
 		return getNormalized().multiply(scalar);
 	}
@@ -109,6 +115,10 @@ public class Vector3 {
 		x = rotated.x;
 		y = rotated.y;
 		z = rotated.z;
+	}
+	
+	public Color getColour() {
+		return new Color((int) (255 * Math.min(1, x)), (int) (255 * Math.min(1, y)), (int) (255 * Math.min(1, z)));
 	}
 
 	@Override

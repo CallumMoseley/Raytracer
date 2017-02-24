@@ -18,6 +18,7 @@ import geometry.ColourCube;
 import geometry.Ray;
 import geometry.Vector3;
 import graphics.Camera;
+import graphics.PointLight;
 import graphics.Scene;
 import graphics.SceneObject;
 
@@ -36,7 +37,12 @@ public class RayPanel extends JPanel implements MouseListener, MouseMotionListen
 		setPreferredSize(new Dimension(1024, 576));
 		
 		scene = new Scene();
-		scene.getObjects().add(new SceneObject(new ColourCube(2, new Vector3(0, 0, 10))));
+//		scene.getObjects().add(new SceneObject(new ColourCube(2, new Vector3(0, 0, 10))));
+		for (int i = 0; i < 10; i++) {
+			scene.getObjects().add(new SceneObject(new ColourCube(2, new Vector3((2 * Math.random() - 1) * 20, (2 * Math.random() - 1) * 20, (2 * Math.random() - 1) * 20))));
+		}
+		scene.getLights().add(new PointLight(new Vector3(9, 10, 3), 100, new Vector3(1, 1, 1), 100, new Vector3(1, 1, 1)));
+		
 		cam = new Camera(new Ray(0, 0, 0, 0, 0, 1), 90);
 		try {
 			robot = new Robot();

@@ -1,23 +1,21 @@
 package geometry;
 
-import java.awt.Color;
-
 public class Mesh {
 	private Vector3[] vertices;
 	private int[][] triangles;
-	private Color[] triangleColours;
+	private Vector3[] triangleColours;
 	
 	public Mesh() {
 		
 	}
 	
-	public Mesh(Vector3[] verts, int[][] tris, Color[] cols) {
+	public Mesh(Vector3[] verts, int[][] tris, Vector3[] cols) {
 		vertices = verts;
 		triangles = tris;
 		triangleColours = cols;
 	}
 	
-	public void setMesh(Vector3[] verts, int[][] tris, Color[] cols) {
+	public void setMesh(Vector3[] verts, int[][] tris, Vector3[] cols) {
 		vertices = verts;
 		triangles = tris;
 		triangleColours = cols;
@@ -31,7 +29,27 @@ public class Mesh {
 		return triangles;
 	}
 	
-	public Color[] getColours() {
+	public Vector3[] getTriangle(int t) {
+		return new Vector3[] {
+			vertices[triangles[t][0]],
+			vertices[triangles[t][1]],
+			vertices[triangles[t][2]]
+		};
+	}
+	
+	public Vector3[] getColours() {
 		return triangleColours;
+	}
+	
+	public Vector3 getNormal(int tri) {
+		return normal(getTriangle(tri));
+	}
+	
+	public static Vector3 normal(Vector3[] tri) {
+		return normal(tri[0], tri[1], tri[2]);
+	}
+	
+	public static Vector3 normal(Vector3 v0, Vector3 v1, Vector3 v2) {
+		return v1.subtract(v0).getCross(v2.subtract(v0)).getNormalized();
 	}
 }

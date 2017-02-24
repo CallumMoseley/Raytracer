@@ -1,9 +1,8 @@
 package graphics;
 
-import geometry.Ray;
 import geometry.Vector3;
 
 public interface LightSource {
 	
-	public double getIntensity(Ray p, Vector3 normal);
+	public LightState getIntensity(Vector3 viewer, Vector3 normal, Vector3 point, double specularHardness);
 }
